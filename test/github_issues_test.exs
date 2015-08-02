@@ -17,7 +17,7 @@ defmodule GithubIssuesTest do
     use_cassette "github_httpotion" do
 
       {:ok, result} = HTTPoison.get "https://api.github.com/repos/deansc/wp_roster/issues"
-      assert handle_response({:ok, result}) == {:ok, result.body}
+      assert handle_response({:ok, result}) == {:ok, Poison.decode(result.body)}
     end
   end
 
