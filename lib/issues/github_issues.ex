@@ -13,11 +13,6 @@ defmodule Issues.GithubIssues do
   
   def issues_url(user, project), do: "#{@github_url}/repos/#{user}/#{project}/issues"
 
-  def handle_response({:ok, %Response{status_code: 200, body: body}}), do: {:ok, Poison.decode(body)}
-  def handle_response({:ok, %Response{status_code: ___, body: body}}), do: {:error, Poison.decode(body)}
-  
-  # def convert_to_list_of_hashdicts(list) do 
-  #   list
-  #     |> Enum.map(&Enum.into(&1, HashDict.new))
-  # end
+  def handle_response({:ok, %HTTPoison.Response{status_code: 200, body: body}}), do: {:ok, :jsx.decode(body)}
+  def handle_response({:ok, %HTTPoison.Response{status_code: ___, body: body}}), do: {:error, :jsx.decode(body)}
 end

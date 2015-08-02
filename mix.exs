@@ -29,7 +29,7 @@ defmodule Issues.Mixfile do
   defp deps do
     [
       {:httpoison, "~> 0.7"},
-      {:poison, "~> 1.4.0"},
+      {:jsx, "~> 2.6.2" },
       {:exvcr, "~> 0.4.1", only: :test},
       {:ibrowse, github: "cmullaparthi/ibrowse", only: :test}
     ]
