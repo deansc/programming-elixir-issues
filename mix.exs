@@ -28,7 +28,9 @@ defmodule Issues.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     [
-      {:httpoison, "~> 0.7"}
+      {:httpoison, "~> 0.7"},
+      {:exvcr, "~> 0.4.1", only: :test},
+      {:ibrowse, github: "cmullaparthi/ibrowse", only: :test}
     ]
   end
 end
