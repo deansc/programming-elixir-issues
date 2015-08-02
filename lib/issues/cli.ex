@@ -42,6 +42,7 @@ defmodule Issues.CLI do
       |> decode_response
       |> convert_to_list_of_hashdicts
       |> sort_into_ascending_order
+      |> Enum.take(_count)
   end
 
   def decode_response({:ok, body}), do: body
@@ -57,8 +58,9 @@ defmodule Issues.CLI do
   end
 
   def sort_into_ascending_order(list) do
-    Enum.sort list,
-              fn i1, i2 -> i1["created_at"] <= i2["created_at"] end
+    Enum.sort list, fn i1, i2 -> 
+      i1["created_at"] <= i2["created_at"] 
+    end
   end
 
 end
