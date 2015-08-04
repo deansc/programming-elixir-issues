@@ -14,10 +14,10 @@ defmodule GithubIssuesTest do
   end
 
   test "handle_response should return a map composed of a status code and a body." do
-    use_cassette "github_httpotion" do
+    use_cassette "github_httpoison" do
 
       {:ok, result} = HTTPoison.get "https://api.github.com/repos/deansc/wp_roster/issues"
-      assert handle_response({:ok, result}) == {:ok, Poison.decode(result.body)}
+      assert handle_response({:ok, result}) == {:ok, :jsx.decode(result.body)}
     end
   end
 
