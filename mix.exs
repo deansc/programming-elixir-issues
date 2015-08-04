@@ -7,6 +7,7 @@ defmodule Issues.Mixfile do
      elixir: "~> 1.0",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     escript: escript_config,
      deps: deps]
   end
 
@@ -33,5 +34,9 @@ defmodule Issues.Mixfile do
       {:exvcr, "~> 0.4.1", only: :test},
       {:ibrowse, github: "cmullaparthi/ibrowse", only: :test}
     ]
+  end
+
+  defp escript_config do
+    [ main_module: Issues.CLI ]
   end
 end
